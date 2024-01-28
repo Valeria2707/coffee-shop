@@ -1,5 +1,5 @@
 import React from "react";
-import Svg, { G, Path } from "react-native-svg";
+import Svg, { Circle, G, Path } from "react-native-svg";
 
 type Props = {
   width?: string | number;
@@ -40,6 +40,52 @@ export const Icon = {
       <Path
         fill="currentColor"
         d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"
+      />
+    </Svg>
+  ),
+  home: (props: Props) => (
+    <Svg {...props} viewBox="0 0 20 20">
+      <Path
+        fill="currentColor"
+        d="M11.003 2.388a1.5 1.5 0 0 0-2.005 0l-5.5 4.942A1.5 1.5 0 0 0 3 8.445V15.5A1.5 1.5 0 0 0 4.5 17h2A1.5 1.5 0 0 0 8 15.5v-4a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 0 1.5 1.5h2a1.5 1.5 0 0 0 1.5-1.5V8.445a1.5 1.5 0 0 0-.497-1.115z"
+      />
+    </Svg>
+  ),
+  heart: (props: Props) => (
+    <Svg {...props} viewBox="0 0 24 24">
+      <Path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M8.106 18.247C5.298 16.083 2 13.542 2 9.137C2 4.274 7.5.825 12 5.501V20.5c-1 0-2-.77-3.038-1.59c-.277-.218-.564-.438-.856-.663"
+        clip-rule="evenodd"
+        opacity=".5"
+      />
+      <Path
+        fill="currentColor"
+        d="M15.038 18.91C17.981 16.592 22 14 22 9.138c0-4.863-5.5-8.312-10-3.636V20.5c1 0 2-.77 3.038-1.59"
+      />
+    </Svg>
+  ),
+  bag: (props: Props) => (
+    <Svg {...props} viewBox="0 0 24 24">
+      <Path
+        fill="currentColor"
+        d="M4.035 11.573c.462-2.309.693-3.463 1.522-4.143c.83-.68 2.007-.68 4.362-.68h4.162c2.355 0 3.532 0 4.361.68c.83.68 1.06 1.834 1.523 4.143l.6 3c.664 3.32.996 4.98.096 6.079c-.9 1.098-2.594 1.098-5.98 1.098H9.32c-3.386 0-5.08 0-5.98-1.098c-.9-1.098-.568-2.758.096-6.079z"
+        opacity=".5"
+      />
+      <Circle cx="15" cy="9.75" r="1" fill="currentColor" />
+      <Circle cx="9" cy="9.75" r="1" fill="currentColor" />
+      <Path
+        fill="currentColor"
+        d="M9.75 5.75a2.25 2.25 0 0 1 4.5 0v1h.431c.377 0 .733 0 1.069.002V5.75a3.75 3.75 0 1 0-7.5 0v1.002c.336-.002.692-.002 1.069-.002h.431z"
+      />
+    </Svg>
+  ),
+  bell: (props: Props) => (
+    <Svg {...props} viewBox="0 0 24 24">
+      <Path
+        fill="currentColor"
+        d="M12 22a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22m7-7.414V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v4.586l-1.707 1.707A.996.996 0 0 0 3 17v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-1a.996.996 0 0 0-.293-.707z"
       />
     </Svg>
   ),

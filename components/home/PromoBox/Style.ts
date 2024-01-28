@@ -4,11 +4,11 @@ import { Palette } from "../../../const/color";
 
 export const styles = StyleSheet.create({
   img: {
-    width: "100%",
+    width: "95%",
     height: 160,
     position: "absolute",
     top: "-20%",
-    left: "7%",
+    left: "8%",
     paddingLeft: 24,
     paddingVertical: 10,
   },

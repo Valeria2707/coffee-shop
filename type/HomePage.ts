@@ -6,3 +6,8 @@ export type CoffeeCard = {
   adding: string;
   price: number;
 };
+
+export type CoffeeType = {
+  id: string;
+  type: string;
+};
