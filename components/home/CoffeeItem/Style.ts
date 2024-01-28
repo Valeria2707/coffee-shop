@@ -1,17 +1,18 @@
 import { StyleSheet } from "react-native";
 
-import { palette } from "../../../const/color";
+import { Palette } from "../../../const/color";
 
 export const styles = StyleSheet.create({
   cardBox: {
     display: "flex",
     width: "45%",
     flexDirection: "column",
-    backgroundColor: palette.basic[0],
+    backgroundColor: Palette.basic[0],
     position: "relative",
     borderRadius: 16,
-    marginLeft: 10,
-    shadowColor: palette.basic[100],
+    margin: 10,
+
+    shadowColor: Palette.basic[100],
     shadowOffset: {
       width: 0,
       height: 3,
@@ -24,13 +25,13 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
     marginBottom: 4,
-    color: palette.dark[700],
+    color: Palette.dark[700],
   },
   infoBox: {
     padding: 12,
   },
   textAdd: {
-    color: palette.dark[100],
+    color: Palette.dark[100],
     fontSize: 12,
     fontWeight: "400",
   },
@@ -45,20 +46,19 @@ export const styles = StyleSheet.create({
     width: 30,
     height: 28,
     borderRadius: 10,
-    backgroundColor: palette.brown[100],
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
   },
   buttonText: {
-    color: palette.basic[0],
+    color: Palette.basic[0],
     fontSize: 16,
     fontWeight: "600",
   },
   priceText: {
     fontSize: 18,
     fontWeight: "600",
-    color: palette.dark[800],
+    color: Palette.dark[800],
   },
   img: {
     width: "100%",

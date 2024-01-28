@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { palette } from "../../../const/color";
+import { Palette } from "../../../const/color";
 
 export const styles = StyleSheet.create({
   boxRating: {
@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   textRating: {
-    color: palette.basic[0],
+    color: Palette.basic[0],
     fontSize: 10,
     fontWeight: "600",
   },

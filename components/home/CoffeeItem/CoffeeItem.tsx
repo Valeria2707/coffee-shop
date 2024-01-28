@@ -1,18 +1,11 @@
 import { Image, Text, View, Pressable } from "react-native";
 
 import { styles } from "./Style";
+import { Palette } from "../../../const/color";
+import { CoffeeCard } from "../../../type/HomePage";
 import Rating from "../Rating/Rating";
 
-type Props = {
-  id: string;
-  img: any;
-  rating: number;
-  type: string;
-  adding: string;
-  price: number;
-};
-
-export default function CoffeeItem(item: Props) {
+export default function CoffeeItem(item: CoffeeCard) {
   const { img, type, rating, adding, price } = item;
   return (
     <View style={styles.cardBox}>
@@ -23,7 +16,17 @@ export default function CoffeeItem(item: Props) {
         <Text style={styles.textAdd}>{adding}</Text>
         <View style={styles.priceBox}>
           <Text style={styles.priceText}>$ {price}</Text>
-          <Pressable style={styles.buttonAdd} onPress={() => {}}>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                backgroundColor: pressed
+                  ? Palette.dark[700]
+                  : Palette.brown[100],
+              },
+              styles.buttonAdd,
+            ]}
+            onPress={() => {}}
+          >
             <Text style={styles.buttonText}>+</Text>
           </Pressable>
         </View>
