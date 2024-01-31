@@ -49,6 +49,28 @@ export const CAPPUCINO = [
     adding: "with Cinnamon",
     price: 6.4,
   },
+];
+
+export const NewAddCappucino = [
+  {
+    id: uuidv4(),
+    img: require("../img/cappuchino-11.jpg"),
+    rating: 4.7,
+    type: "Cappucino",
+    adding: "with White Chocolate",
+    price: 3.1,
+  },
+  {
+    id: uuidv4(),
+    img: require("../img/cappuchino-12.jpg"),
+    rating: 5,
+    type: "Cappucino",
+    adding: "with Coconut Milk",
+    price: 5.9,
+  },
+];
+
+export const MoreCappucino = [
   {
     id: uuidv4(),
     img: require("../img/cappuchino-7.jpg"),

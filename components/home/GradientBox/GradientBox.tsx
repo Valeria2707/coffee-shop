@@ -1,9 +1,8 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextInput, View } from "react-native";
 
 import { styles } from "./Style";
-import { CAPPUCINO } from "../../../_mock/Cappucino";
 import { Palette } from "../../../const/color";
 import { Icon } from "../../../const/icon";
 import { CoffeeCard } from "../../../type/HomePage";
@@ -12,9 +11,13 @@ import SettingModal from "../SettingModal/SettingModal";
 
 type Props = {
   setFilteredCappucino: (val: CoffeeCard[]) => void;
+  cappuchino: CoffeeCard[];
 };
 
-export default function GradientBox({ setFilteredCappucino }: Props) {
+export default function GradientBox({
+  setFilteredCappucino,
+  cappuchino,
+}: Props) {
   const [text, setText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
@@ -23,7 +26,7 @@ export default function GradientBox({ setFilteredCappucino }: Props) {
   const handleText = (text: string) => setText(text);
 
   const handleSearch = () => {
-    const filteredItems = CAPPUCINO.filter(
+    const filteredItems = cappuchino.filter(
       (item) =>
         item.type.toLowerCase().includes(text.toLowerCase()) ||
         item.adding.toLowerCase().includes(text.toLowerCase()),
@@ -45,6 +48,14 @@ export default function GradientBox({ setFilteredCappucino }: Props) {
   const toggleModal = () => {
     setModalVisible(!modalVisible);
   };
+
+  useEffect(() => {
+    const filterData = async () => {
+      await handleSearch();
+    };
+    filterData();
+  }, [cappuchino]);
+
   return (
     <LinearGradient
       colors={[Palette.dark[900], Palette.dark[600]]}
@@ -72,6 +83,7 @@ export default function GradientBox({ setFilteredCappucino }: Props) {
         setSliderValue={setSliderValue}
         userOption={userOption}
         setUserOption={setUserOption}
+        cappuchino={cappuchino}
       />
     </LinearGradient>
   );

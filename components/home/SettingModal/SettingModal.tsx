@@ -1,9 +1,9 @@
 import Slider from "@react-native-community/slider";
+import { useEffect } from "react";
 import { Pressable, View, Text } from "react-native";
 import Modal from "react-native-modal";
 
 import { styles } from "./Style";
-import { CAPPUCINO } from "../../../_mock/Cappucino";
 import { Palette } from "../../../const/color";
 import { Icon } from "../../../const/icon";
 import { CoffeeCard } from "../../../type/HomePage";
@@ -18,6 +18,7 @@ type Props = {
   setSliderValue: (val: number) => void;
   userOption: number | null;
   setUserOption: (val: number | null) => void;
+  cappuchino: CoffeeCard[];
 };
 
 const options = [
@@ -35,6 +36,7 @@ export default function SettingModal({
   userOption,
   setSliderValue,
   sliderValue,
+  cappuchino,
 }: Props) {
   const handleSliderChange = (value: number) => {
     const roundedValue = parseFloat(value.toFixed(1));
@@ -45,6 +47,18 @@ export default function SettingModal({
     setUserOption(null);
     setSliderValue(0);
   };
+
+  useEffect(() => {
+    const filterData = async () => {
+      await filterCoffee(
+        cappuchino,
+        userOption,
+        sliderValue,
+        setFilteredCappucino,
+      );
+    };
+    filterData();
+  }, [cappuchino]);
   return (
     <Modal
       isVisible={modalVisible}
@@ -93,7 +107,7 @@ export default function SettingModal({
             android_ripple={{ color: "black", borderless: true }}
             onPress={() => {
               filterCoffee(
-                CAPPUCINO,
+                cappuchino,
                 userOption,
                 sliderValue,
                 setFilteredCappucino,
