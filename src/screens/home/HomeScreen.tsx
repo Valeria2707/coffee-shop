@@ -16,20 +16,21 @@ import {
   MoreCappucino,
   NewAddCappucino,
 } from "../../../_mock/Cappucino";
-//components
 import { COFFEE } from "../../../_mock/Coffee";
+//components
 import Footer from "../../../components/footer/FooterWidget/Footer";
 import CoffeeItem from "../../../components/home/CoffeeItem/CoffeeItem";
 import CoffeeSlider from "../../../components/home/CoffeeSlider/CoffeeSlider";
 import GradientBox from "../../../components/home/GradientBox/GradientBox";
 import PromoBox from "../../../components/home/PromoBox/PromoBox";
+//hook
+import useRefresh from "../../../hooks/useRefresh";
 //type
 import { CoffeeCard, CoffeeType } from "../../../type/HomePage";
 
 export default function HomePage() {
   const [cappuchino, setCappuchino] = useState(CAPPUCINO);
   const [filteredCappucino, setFilteredCappucino] = useState(cappuchino);
-  const [refreshing, setRefreshing] = useState(false);
   const [firstUpdate, setFirstUpdate] = useState(true);
   const [
     onEndReachedCalledDuringMomentum,
@@ -43,16 +44,14 @@ export default function HomePage() {
     }
   };
 
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
+  const { refreshing, onRefresh } = useRefresh(async () => {
     setTimeout(() => {
       if (firstUpdate) {
         setCappuchino([...cappuchino, ...NewAddCappucino]);
         setFirstUpdate(false);
       }
-      setRefreshing(false);
     }, 1500);
-  }, []);
+  });
 
   const handleEndReached = useCallback(() => {
     if (!onEndReachedCalledDuringMomentum) {
