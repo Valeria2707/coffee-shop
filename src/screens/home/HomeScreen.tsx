@@ -11,14 +11,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 //styles
 import { styles } from "./Styles";
 //mock
-import {
-  CAPPUCINO,
-  MoreCappucino,
-  NewAddCappucino,
-} from "../../../_mock/Cappucino";
+import { CAPPUCINO, NewAddCappucino } from "../../../_mock/Cappucino";
 //components
 import { COFFEE } from "../../../_mock/Coffee";
-import Footer from "../../../components/footer/FooterWidget/Footer";
 import CoffeeItem from "../../../components/home/CoffeeItem/CoffeeItem";
 import CoffeeSlider from "../../../components/home/CoffeeSlider/CoffeeSlider";
 import GradientBox from "../../../components/home/GradientBox/GradientBox";
@@ -31,10 +26,6 @@ export default function HomePage() {
   const [filteredCappucino, setFilteredCappucino] = useState(cappuchino);
   const [refreshing, setRefreshing] = useState(false);
   const [firstUpdate, setFirstUpdate] = useState(true);
-  const [
-    onEndReachedCalledDuringMomentum,
-    setOnEndReachedCalledDuringMomentum,
-  ] = useState(false);
   const [selectedCoffe, setSelectedCoffee] = useState<number | null>(0);
 
   const handleCoffeeTypeSelect = (index: number) => {
@@ -52,13 +43,6 @@ export default function HomePage() {
       }
       setRefreshing(false);
     }, 1500);
-  }, []);
-
-  const handleEndReached = useCallback(() => {
-    if (!onEndReachedCalledDuringMomentum) {
-      setCappuchino([...cappuchino, ...MoreCappucino]);
-      setOnEndReachedCalledDuringMomentum(true);
-    }
   }, []);
 
   const renderItem = ({ item }: { item: CoffeeCard }) => (
@@ -106,18 +90,12 @@ export default function HomePage() {
               refreshControl={
                 <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
               }
-              onMomentumScrollBegin={() => {
-                setOnEndReachedCalledDuringMomentum(false);
-              }}
-              onEndReached={handleEndReached}
-              onEndReachedThreshold={0.5}
             />
           ) : (
             <Text style={styles.noFoundText}>
               Oops, we didn't find such coffee.
             </Text>
           )}
-          <Footer />
         </SafeAreaView>
       </>
     </TouchableWithoutFeedback>

@@ -1,11 +1,11 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import HomePage from "./src/screens/home/HomeScreen";
+import Navigation from "./navigation/Navigation";
 
 export default function App() {
   return (
     <SafeAreaProvider>
-      <HomePage />
+      <Navigation />
     </SafeAreaProvider>
   );
 }
