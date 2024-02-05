@@ -10,7 +10,6 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 //styles
 import { styles } from "./Styles";
-//mock
 import { CAPPUCINO, NewAddCappucino } from "../../../_mock/Cappucino";
 //components
 import { COFFEE } from "../../../_mock/Coffee";
@@ -18,13 +17,14 @@ import CoffeeItem from "../../../components/home/CoffeeItem/CoffeeItem";
 import CoffeeSlider from "../../../components/home/CoffeeSlider/CoffeeSlider";
 import GradientBox from "../../../components/home/GradientBox/GradientBox";
 import PromoBox from "../../../components/home/PromoBox/PromoBox";
+//hook
+import useRefresh from "../../../hooks/useRefresh";
 //type
 import { CoffeeCard, CoffeeType } from "../../../type/HomePage";
 
 export default function HomePage() {
   const [cappuchino, setCappuchino] = useState(CAPPUCINO);
   const [filteredCappucino, setFilteredCappucino] = useState(cappuchino);
-  const [refreshing, setRefreshing] = useState(false);
   const [firstUpdate, setFirstUpdate] = useState(true);
   const [selectedCoffe, setSelectedCoffee] = useState<number | null>(0);
 
@@ -34,16 +34,14 @@ export default function HomePage() {
     }
   };
 
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
+  const { refreshing, onRefresh } = useRefresh(async () => {
     setTimeout(() => {
       if (firstUpdate) {
         setCappuchino([...cappuchino, ...NewAddCappucino]);
         setFirstUpdate(false);
       }
-      setRefreshing(false);
     }, 1500);
-  }, []);
+  });
 
   const renderItem = ({ item }: { item: CoffeeCard }) => (
     <CoffeeItem {...item} />
