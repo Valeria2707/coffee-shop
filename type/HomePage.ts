@@ -5,6 +5,9 @@ export type CoffeeCard = {
   type: string;
   adding: string;
   price: number;
+  milk: boolean;
+  coffee: boolean;
+  description: string;
 };
 
 export type CoffeeType = {

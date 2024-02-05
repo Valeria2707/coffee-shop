@@ -1,3 +1,5 @@
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { Image, Text, View, Pressable } from "react-native";
 
 import { styles } from "./Style";
@@ -5,8 +7,22 @@ import { Palette } from "../../../const/color";
 import { CoffeeCard } from "../../../type/HomePage";
 import Rating from "../Rating/Rating";
 
+type RootStackParamList = {
+  Tabs: undefined;
+  DetailsCoffee: { item: CoffeeCard };
+};
+
+// Define Props type
+type Props = NativeStackScreenProps<RootStackParamList, "DetailsCoffee">;
+
 export default function CoffeeItem(item: CoffeeCard) {
   const { img, type, rating, adding, price } = item;
+
+  const navigation = useNavigation<Props["navigation"]>();
+
+  const hadlePress = () => {
+    navigation.navigate("DetailsCoffee", { item });
+  };
   return (
     <View style={styles.cardBox}>
       <Image source={img} style={styles.img} alt="Cappucino" />
@@ -25,7 +41,7 @@ export default function CoffeeItem(item: CoffeeCard) {
               },
               styles.buttonAdd,
             ]}
-            onPress={() => {}}
+            onPress={hadlePress}
           >
             <Text style={styles.buttonText}>+</Text>
           </Pressable>

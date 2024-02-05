@@ -9,7 +9,9 @@ const LIGHT = {
 };
 
 const DARK = {
+  30: "#EAEAEA",
   50: "#8D8D8D",
+  70: "#DEDEDE",
   100: "#9B9B9B",
   200: "#989898",
   600: "#313131",
@@ -19,10 +21,12 @@ const DARK = {
 };
 
 const BROWN = {
+  20: "#FFF5EE",
   100: "#C67C4E",
 };
 
 const RED = {
+  20: "#FFF0F0",
   100: "#ED5151",
 };
 

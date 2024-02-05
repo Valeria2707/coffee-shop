@@ -8,7 +8,7 @@ import { Palette } from "../../../const/color";
 import { Icon } from "../../../const/icon";
 import { CoffeeCard } from "../../../type/HomePage";
 import { filterCoffee } from "../../../utils/filter";
-import RadioButton from "../../ui-kit/RadioButton";
+import RadioButton from "../../ui-kit/radioButton/RadioButton";
 
 type Props = {
   modalVisible: boolean;
