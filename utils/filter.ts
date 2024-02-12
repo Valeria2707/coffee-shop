@@ -6,7 +6,7 @@ export const filterCoffee = (
   val2: number,
   setData: (val: CoffeeCard[]) => void,
 ) => {
-  let filterData = arr;
+  let filterData = [...arr];
 
   if (val1 !== null) {
     filterData = filterData.filter((coffee) => coffee.rating >= val1);

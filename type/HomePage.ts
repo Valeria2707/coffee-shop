@@ -7,6 +7,7 @@ export type CoffeeCard = {
   price: number;
   milk: boolean;
   coffee: boolean;
+  isFavourites: boolean;
   description: string;
 };
 

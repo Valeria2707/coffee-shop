@@ -1,16 +1,16 @@
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import {
   FlatList,
   Keyboard,
   TouchableWithoutFeedback,
   Text,
   RefreshControl,
+  View,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 //styles
 import { styles } from "./Styles";
-import { CAPPUCINO, NewAddCappucino } from "../../../_mock/Cappucino";
+import { NewAddCappucino } from "../../../_mock/Cappucino";
 //components
 import { COFFEE } from "../../../_mock/Coffee";
 import CoffeeItem from "../../../components/home/CoffeeItem/CoffeeItem";
@@ -20,10 +20,13 @@ import PromoBox from "../../../components/home/PromoBox/PromoBox";
 //hook
 import useRefresh from "../../../hooks/useRefresh";
 //type
+import { setCappuchino } from "../../../redux/slice/coffeeSlice";
+import { useAppDispatch, useAppSelector } from "../../../redux/store/store";
 import { CoffeeCard, CoffeeType } from "../../../type/HomePage";
 
 export default function HomePage() {
-  const [cappuchino, setCappuchino] = useState(CAPPUCINO);
+  const dispatch = useAppDispatch();
+  const cappuchino = useAppSelector((state) => state.cappuccino.cappuchino);
   const [filteredCappucino, setFilteredCappucino] = useState(cappuchino);
   const [firstUpdate, setFirstUpdate] = useState(true);
   const [selectedCoffe, setSelectedCoffee] = useState<number | null>(0);
@@ -37,7 +40,7 @@ export default function HomePage() {
   const { refreshing, onRefresh } = useRefresh(async () => {
     setTimeout(() => {
       if (firstUpdate) {
-        setCappuchino([...cappuchino, ...NewAddCappucino]);
+        dispatch(setCappuchino([...cappuchino, ...NewAddCappucino]));
         setFirstUpdate(false);
       }
     }, 1500);
@@ -65,11 +68,8 @@ export default function HomePage() {
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <>
-        <GradientBox
-          setFilteredCappucino={setFilteredCappucino}
-          cappuchino={cappuchino}
-        />
-        <SafeAreaView style={styles.container}>
+        <GradientBox setFilteredCappucino={setFilteredCappucino} />
+        <View style={styles.container}>
           <PromoBox />
           <FlatList
             data={COFFEE}
@@ -94,7 +94,7 @@ export default function HomePage() {
               Oops, we didn't find such coffee.
             </Text>
           )}
-        </SafeAreaView>
+        </View>
       </>
     </TouchableWithoutFeedback>
   );

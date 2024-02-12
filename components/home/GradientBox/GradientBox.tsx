@@ -5,19 +5,17 @@ import { TextInput, View } from "react-native";
 import { styles } from "./Style";
 import { Palette } from "../../../const/color";
 import { Icon } from "../../../const/icon";
+import { useAppSelector } from "../../../redux/store/store";
 import { CoffeeCard } from "../../../type/HomePage";
 import SettingButton from "../SettingButton/SettingButton";
 import SettingModal from "../SettingModal/SettingModal";
 
 type Props = {
   setFilteredCappucino: (val: CoffeeCard[]) => void;
-  cappuchino: CoffeeCard[];
 };
 
-export default function GradientBox({
-  setFilteredCappucino,
-  cappuchino,
-}: Props) {
+export default function GradientBox({ setFilteredCappucino }: Props) {
+  const cappuchino = useAppSelector((state) => state.cappuccino.cappuchino);
   const [text, setText] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
   const [sliderValue, setSliderValue] = useState(0);
@@ -83,7 +81,6 @@ export default function GradientBox({
         setSliderValue={setSliderValue}
         userOption={userOption}
         setUserOption={setUserOption}
-        cappuchino={cappuchino}
       />
     </LinearGradient>
   );

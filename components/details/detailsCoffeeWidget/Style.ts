@@ -30,4 +30,5 @@ export const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "400",
   },
+  heartBox: { gap: 10, alignItems: "flex-end" },
 });

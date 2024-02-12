@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: Palette.light[100],
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 80,
     zIndex: 0,
   },
   noFoundText: {
