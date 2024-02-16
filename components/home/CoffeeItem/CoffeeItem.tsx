@@ -5,6 +5,7 @@ import { Image, Text, View, Pressable } from "react-native";
 import { styles } from "./Style";
 import { Palette } from "../../../const/color";
 import { CoffeeCard } from "../../../type/HomePage";
+import FavouriteSign from "../../ui-kit/favouriteSign/FavouriteSign";
 import Rating from "../Rating/Rating";
 
 type RootStackParamList = {
@@ -16,7 +17,7 @@ type RootStackParamList = {
 type Props = NativeStackScreenProps<RootStackParamList, "DetailsCoffee">;
 
 export default function CoffeeItem(item: CoffeeCard) {
-  const { img, type, rating, adding, price } = item;
+  const { img, type, rating, adding, price, isFavourites } = item;
 
   const navigation = useNavigation<Props["navigation"]>();
 
@@ -27,6 +28,7 @@ export default function CoffeeItem(item: CoffeeCard) {
     <View style={styles.cardBox}>
       <Image source={img} style={styles.img} alt="Cappucino" />
       <Rating rating={rating} />
+      {isFavourites && <FavouriteSign />}
       <View style={styles.infoBox}>
         <Text style={styles.titleCoffee}>{type}</Text>
         <Text style={styles.textAdd}>{adding}</Text>

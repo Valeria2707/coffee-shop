@@ -37,11 +37,6 @@ export default function NativeStack() {
               />
             </Pressable>
           ),
-          headerRight: () => (
-            <Pressable onPress={() => {}}>
-              <Icon.favourite color={Palette.red[100]} width={24} height={24} />
-            </Pressable>
-          ),
         }}
       />
     </Stack.Navigator>

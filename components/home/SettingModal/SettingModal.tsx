@@ -6,6 +6,7 @@ import Modal from "react-native-modal";
 import { styles } from "./Style";
 import { Palette } from "../../../const/color";
 import { Icon } from "../../../const/icon";
+import { useAppSelector } from "../../../redux/store/store";
 import { CoffeeCard } from "../../../type/HomePage";
 import { filterCoffee } from "../../../utils/filter";
 import RadioButton from "../../ui-kit/radioButton/RadioButton";
@@ -18,7 +19,6 @@ type Props = {
   setSliderValue: (val: number) => void;
   userOption: number | null;
   setUserOption: (val: number | null) => void;
-  cappuchino: CoffeeCard[];
 };
 
 const options = [
@@ -36,8 +36,8 @@ export default function SettingModal({
   userOption,
   setSliderValue,
   sliderValue,
-  cappuchino,
 }: Props) {
+  const cappuchino = useAppSelector((state) => state.cappuccino.cappuchino);
   const handleSliderChange = (value: number) => {
     const roundedValue = parseFloat(value.toFixed(1));
     setSliderValue(roundedValue);
