@@ -5,6 +5,7 @@ import { Image, Text, View, Pressable } from "react-native";
 import { styles } from "./Style";
 import { Palette } from "../../../const/color";
 import { CoffeeCard } from "../../../type/HomePage";
+import { formatNumberToCurrency } from "../../../utils/number";
 import FavouriteSign from "../../ui-kit/favouriteSign/FavouriteSign";
 import Rating from "../Rating/Rating";
 
@@ -13,7 +14,6 @@ type RootStackParamList = {
   DetailsCoffee: { item: CoffeeCard };
 };
 
-// Define Props type
 type Props = NativeStackScreenProps<RootStackParamList, "DetailsCoffee">;
 
 export default function CoffeeItem(item: CoffeeCard) {
@@ -33,7 +33,7 @@ export default function CoffeeItem(item: CoffeeCard) {
         <Text style={styles.titleCoffee}>{type}</Text>
         <Text style={styles.textAdd}>{adding}</Text>
         <View style={styles.priceBox}>
-          <Text style={styles.priceText}>$ {price}</Text>
+          <Text style={styles.priceText}>${formatNumberToCurrency(price)}</Text>
           <Pressable
             style={({ pressed }) => [
               {

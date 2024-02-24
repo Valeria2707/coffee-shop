@@ -129,4 +129,14 @@ export const Icon = {
       />
     </Svg>
   ),
+  minus: (props: Props) => (
+    <Svg {...props} viewBox="0 0 24 24">
+      <Path fill="currentColor" d="M19 12.998H5v-2h14z" />
+    </Svg>
+  ),
+  plus: (props: Props) => (
+    <Svg {...props} viewBox="0 0 24 24">
+      <Path fill="currentColor" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" />
+    </Svg>
+  ),
 };

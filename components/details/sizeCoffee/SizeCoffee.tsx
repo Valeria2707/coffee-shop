@@ -7,13 +7,19 @@ type Props = {
   size: string;
   selectedSize: string;
   setSelectedSize: (val: string) => void;
+  updatePrice: (val: string) => void;
 };
 
 export default function SizeCoffee({
   size,
   selectedSize,
   setSelectedSize,
+  updatePrice,
 }: Props) {
+  const handleChooseSize = () => {
+    updatePrice(size);
+    setSelectedSize(size);
+  };
   return (
     <Pressable
       style={[
@@ -26,7 +32,7 @@ export default function SizeCoffee({
         },
         styles.button,
       ]}
-      onPress={() => setSelectedSize(size)}
+      onPress={handleChooseSize}
     >
       <Text
         style={[

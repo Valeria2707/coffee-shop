@@ -1,7 +1,8 @@
 import { useMemo } from "react";
-import { Text, FlatList, View } from "react-native";
+import { FlatList, View } from "react-native";
 
 import CoffeeItem from "../../../components/home/CoffeeItem/CoffeeItem";
+import NoFound from "../../../components/shared/noFound/NoFound";
 import { Palette } from "../../../const/color";
 import { useAppSelector } from "../../../redux/store/store";
 import { CoffeeCard } from "../../../type/HomePage";
@@ -19,13 +20,7 @@ export default function FavouriteScreen() {
   );
 
   if (favourite.length <= 0) {
-    return (
-      <View style={{ marginTop: 100 }}>
-        <Text style={{ fontSize: 32, fontWeight: "700", alignSelf: "center" }}>
-          Oops, you don't have any favourites.
-        </Text>
-      </View>
-    );
+    return <NoFound text="Oops, you don't have any favourites." />;
   }
 
   return (

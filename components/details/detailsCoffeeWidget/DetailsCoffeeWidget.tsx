@@ -22,20 +22,46 @@ type RootStackParamList = {
 
 type Props = NativeStackScreenProps<RootStackParamList, "DetailsCoffee">;
 
+const calculatePrice = (currentPrice: number, selectedSize: string): number => {
+  switch (selectedSize) {
+    case "S":
+      return currentPrice;
+    case "M":
+      return currentPrice + 2;
+    case "L":
+      return currentPrice + 3;
+    default:
+      return currentPrice;
+  }
+};
+
 export default function DetailsCoffeeWidget({ route }: Props) {
   const { item } = route.params;
   const {
     img,
     rating,
     type,
-    price,
     adding,
     description,
     milk,
     coffee,
+    price,
     isFavourites,
   } = item;
   const [isFavourite, setIsFavourite] = useState(isFavourites);
+
+  const [selectedSize, setSelectedSize] = useState("S");
+
+  const [currentPrice, setCurrentPrice] = useState(item.price);
+
+  const updatePrice = (selectedSize: string) => {
+    if (selectedSize === "S") {
+      setCurrentPrice(item.price);
+    } else {
+      setCurrentPrice(calculatePrice(price, selectedSize));
+    }
+    setSelectedSize(selectedSize);
+  };
 
   const dispatch = useAppDispatch();
 
@@ -77,9 +103,17 @@ export default function DetailsCoffeeWidget({ route }: Props) {
         </View>
         <Divider />
         <DescriptionCoffee description={description} />
-        <BoxOfSizeCoffee />
+        <BoxOfSizeCoffee
+          selectedSize={selectedSize}
+          setSelectedSize={setSelectedSize}
+          updatePrice={updatePrice}
+        />
       </View>
-      <BuyingBox price={price} />
+      <BuyingBox
+        currentPrice={currentPrice}
+        item={item}
+        selectedSize={selectedSize}
+      />
     </>
   );
 }
