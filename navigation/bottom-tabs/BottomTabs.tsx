@@ -51,7 +51,7 @@ export default function Tabs() {
         }}
       />
       <Tab.Screen
-        name="Backet"
+        name="Order"
         component={BacketScreen}
         options={{
           tabBarIcon: ({ color }: { color: string }) => (
