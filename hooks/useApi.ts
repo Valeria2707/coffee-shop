@@ -12,9 +12,11 @@ export default function useApi<T>(url: string, options?: RequestInit) {
     setLoading(true);
     try {
       const response = await fetch(url, { ...options, signal });
+      //serializing func + and default is json 
       const responseData: T = await response.json();
       setData(responseData);
     } catch (error) {
+      //move in enum
       if (error instanceof Error && error.name !== "AbortError") {
         setError(error as Error);
       }
